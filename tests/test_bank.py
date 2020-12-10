@@ -43,6 +43,11 @@ def test_cannot_modify_accounts_set(bank):
 
     assert len(bank.accounts) == 0
 
+def test_add_account(bank):
+    bank.create_account('Test')
+    initial_len = len(bank.transactions)
+    bank.add_funds('Test', 1000)
+    assert len(bank.transactions) == initial_len + 1
 
 # TODO: Add unit tests for bank.add_funds()
 
